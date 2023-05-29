@@ -6,38 +6,10 @@ public class PyramidAndPattern {
 		int rows = 10;
 		// floydsTriangle(rows);
 		// pascalsTriangle(rows);
-		// upStartsPrintTriangle(rows);
-		// downStartsPrintTriangle(rows);
-		tree();
+		 upStartsPrintTriangle(rows);
+		 downStartsPrintTriangle(rows);
+//		tree();
 	}
-
-	// public static void main(String[] args) {
-	// int rows = 7; // Number of Rows we want to print
-	//
-	// StringBuilder buf = new StringBuilder();
-	// // Printing the pattern
-	// for (int i = 1; i <= rows; i++) {
-	// for (int j = 1; j < i; j++) {
-	// buf.append(" ");
-	// }
-	// for (int j = i; j <= rows; j++) {
-	// buf.append("* ");
-	// }
-	// buf.append("\n");
-	// }
-	//
-	// // Printing the reverse pattern
-	// for (int i = rows - 1; i >= 1; i--) {
-	// for (int j = 1; j < i; j++) {
-	// buf.append(" ");
-	// }
-	// for (int j = i; j <= rows; j++) {
-	// buf.append("* ");
-	// }
-	// buf.append("\n");
-	// }
-	// System.out.print(buf.toString());
-	// }
 
 	private static void pascalsTriangle(int rows) {
 		int coef = 1;
@@ -81,7 +53,7 @@ public class PyramidAndPattern {
 		for (int i = 1; i <= r; ++i) {
 			c = 0;
 			for (int s = 1; s <= r - i; ++s) {
-				buf.append("- ");
+				buf.append("  ");
 			}
 
 			for (int x = 0; x < 2 * i - 1; x++) {
@@ -90,7 +62,7 @@ public class PyramidAndPattern {
 			}
 
 			for (int s = c; s < r + c - i; ++s) {
-				buf.append("- ");
+				buf.append("  ");
 			}
 
 			buf.append("\n");
@@ -144,21 +116,22 @@ public class PyramidAndPattern {
 		System.err.println(buf.toString());
 	}
 
-	private static void downStartsPrintTriangle(int row) {
-		StringBuilder buf = new StringBuilder();
+	private static void downStartsPrintTriangle(int height) {
+		for (int i = height; i >= 0; i--) {
+			int spaces = ((height - i) * 2);
+			print(" ", spaces);
 
-		int r = row * 2;
+			int base = (i * 2) - 1;
+			print("* ", base);
 
-		for (int i = 1; i <= r; i++) {
-			for (int j = 1; j < i; j++) {
-				buf.append("- ");
-			}
-			for (int j = i; j <= r; j++) {
-				buf.append("* ");
-			}
-			buf.append("\n");
+			System.out.println();
 		}
-		System.out.print(buf.toString());
+	}
+
+	private static void print(String str, int count) {
+		for (int i = 0; i < count; i++) {
+			System.out.print(str);
+		}
 	}
 
 }
